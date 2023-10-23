@@ -36,7 +36,7 @@ class SecondTableController extends Controller
         $secondtable = Secondtable::with('firsttables')->where('id', $id)->first();
         return $secondtable;
     }
-    public function update(Request $req, $id){
+    public function update(Request $req){
         $validatedData = $req->validate([
             'stext' => ['required', 'string', 'max:255'],
             'ft_id' => ['required'],
@@ -48,7 +48,7 @@ class SecondTableController extends Controller
             'ft_id.required' => 'Text is required'
         ]);
 
-        $secondtable = Secondtable::findorfail($id);
+        $secondtable = Secondtable::findorfail($req->id);
         $secondtable -> stext = $req -> stext;
         $secondtable -> ft_id = $req -> ft_id;
         $secondtable -> save();
@@ -56,8 +56,8 @@ class SecondTableController extends Controller
             'message' => 'Data successfully updated'
         ],200);
     }
-    public function destroy($id){
-        Secondtable::findorfail($id)->delete();
+    public function destroy(Request $req){
+        Secondtable::findorfail($req->id)->delete();
         return response()->json([
             'message' => 'Data successfully deleted'
         ],200);

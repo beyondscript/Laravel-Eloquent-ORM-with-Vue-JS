@@ -50,11 +50,12 @@ export default function second_table(){
     }
     const update = async (values, { resetForm }) => {
 		const formData = new FormData()
+		formData.append('id', values.id)
         formData.append('stext', values.stext)
         formData.append('ft_id', values.ft_id)
 		formData.append('_method', 'patch')
         try {
-            let response = await axios.post('/api/update-from-second-table/' + values.id, formData)
+            let response = await axios.post('/api/update-from-second-table', formData)
             toastr.success(response.data.message)
             document.getElementById('editform').style.display = 'none'
             resetForm({
@@ -69,8 +70,11 @@ export default function second_table(){
         catch (error) {}
     }
 	const destroy = async (id) => {
+		const formData = new FormData()
+		formData.append('id', id)
+		formData.append('_method', 'delete')
 		try{
-			let response = await axios.delete('/api/destroy-from-second-table/' + id)
+			let response = await axios.post('/api/destroy-from-second-table', formData)
 			toastr.error(response.data.message)
 		}
         catch(error){}

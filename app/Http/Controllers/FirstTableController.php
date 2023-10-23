@@ -59,7 +59,7 @@ class FirstTableController extends Controller
         $firsttable = Firsttable::findorfail($id);
         return $firsttable;
     }
-    public function update(Request $req, $id){
+    public function update(Request $req){
         $validatedData = $req->validate([
             'text' => ['required', 'string', 'max:255'],
             'number' => ['required', 'integer'],
@@ -74,7 +74,7 @@ class FirstTableController extends Controller
             'image.image' => 'Image must be an image',
         ]);
 
-        $firsttable = Firsttable::findorfail($id);
+        $firsttable = Firsttable::findorfail($req->id);
         $image = request()->file('image');
         if($image){
             $old_image=$firsttable->image;
@@ -105,8 +105,8 @@ class FirstTableController extends Controller
             ],200);
         }
     }
-    public function destroy($id){
-        $firsttable = Firsttable::findorfail($id);
+    public function destroy(Request $req){
+        $firsttable = Firsttable::findorfail($req->id);
         $image  = $firsttable->image;
         if(file_exists($image)){
             unlink($image);
