@@ -13,7 +13,7 @@
 
         @vite('resources/css/app.css')
     </head>
-    <body class="main">
+    <body id="body" class="main">
         @yield('content')
 
         @vite('resources/js/app.js')

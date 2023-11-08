@@ -10,7 +10,8 @@ const store = createStore({
 		data: {},
 		firstTables: [],
 		editName: null,
-		relatedFirsttable: {}
+		relatedFirsttable: {},
+		serverError: false
 	},
 	mutations:{
 		updateImageError(state, payload){
@@ -33,6 +34,9 @@ const store = createStore({
 		},
 		updateRelatedFirsttable(state, payload){
 			state.relatedFirsttable = payload
+		},
+		updateServerError(state, payload){
+			state.serverError = payload
 		}
 	},
 	actions:{
@@ -77,6 +81,12 @@ const store = createStore({
 		},
 		removeRelatedFirstTable(context){
 			context.commit('updateRelatedFirsttable', {})
+		},
+		setServerError(context){
+			context.commit('updateServerError', true)
+		},
+		removeServerError(context){
+			context.commit('updateServerError', false)
 		}
 	},
 	getters:{
@@ -106,6 +116,9 @@ const store = createStore({
 		},
 		getRelatedFirsttable: function(state){
 			return state.relatedFirsttable
+		},
+		getServerError: function(state){
+			return state.serverError
 		}
 	}
 })
