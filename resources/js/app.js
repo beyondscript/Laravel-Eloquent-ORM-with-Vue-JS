@@ -21,6 +21,7 @@ axios.interceptors.response.use(
 			store.dispatch('setServerError')
 			router.push({name: '500'})
 		}
+		return Promise.reject(error)
 	}
 )
 
