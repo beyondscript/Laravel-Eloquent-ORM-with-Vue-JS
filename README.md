@@ -4,7 +4,7 @@
 	Laravel Eloquent ORM with Vue JS
 </p>
 
-## About Laravel Eloquent ORM with Vue JS
+## About Laravel Eloquent ORM with Vue JS r
 
 Laravel Eloquent ORM with Vue JS is a web application which was designed by using HTML, CSS, JavaScript and Vue JS and developed by using PHP and Laravel framework.
 

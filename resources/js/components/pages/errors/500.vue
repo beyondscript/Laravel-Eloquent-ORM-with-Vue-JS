@@ -14,7 +14,7 @@
 </template>
 
 <script>
-	import { onBeforeMount, onMounted, onBeforeUnmount, onUnmounted } from 'vue';
+	import { onMounted, onUnmounted } from 'vue';
   	import { useStore } from 'vuex';
   	export default{
     	setup(){
