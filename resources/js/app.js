@@ -17,14 +17,8 @@ window.toastr = toastr
 axios.interceptors.response.use(
 	response => response,
   	async(error) => {
-		if(error.response.status === 500 && store.getters.getAppDebug === 'false'){
-			store.dispatch('setServerError')
-			router.push({name: '500'})
-		}
-		else if(error.response.status === 500 && store.getters.getAppDebug === 'true'){
-			store.dispatch('setServerError')
-			store.dispatch('setAppDebugData', error.response.data)
-			router.push({name: 'appDebug'})
+		if(error.response.status === 500){
+			toastr.error('Something went wrong')
 		}
 		return Promise.reject(error)
 	}

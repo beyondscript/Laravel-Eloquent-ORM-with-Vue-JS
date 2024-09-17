@@ -78,9 +78,6 @@ class FirstTableController extends Controller
         $image = request()->file('image');
         if($image){
             $old_image=$firsttable->image;
-            if(file_exists($old_image)){
-                unlink($old_image);
-            }
             $name = hexdec(uniqid());
             $fullname = $name.'.webp';
             $path = 'images/firsttable/';
@@ -88,6 +85,9 @@ class FirstTableController extends Controller
             $resize_image=Image::make($image->getRealPath());
             $resize_image->resize(300,300);
             $resize_image->save('images/firsttable/'.$fullname);
+            if(file_exists($old_image)){
+                unlink($old_image);
+            }
             $firsttable -> text = $req -> text;
             $firsttable -> number = $req -> number;
             $firsttable -> image = $url;
