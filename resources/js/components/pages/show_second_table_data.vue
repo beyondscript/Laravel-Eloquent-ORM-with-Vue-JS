@@ -16,7 +16,7 @@
 	                	<td>{{ data.stext }}</td>
 	                    <td>{{ data.firsttables.text }}</td>
 	                    <td>
-	                        <a class="body-table-link" :href="'/update/data_2/' + data.id" @click.prevent="showEditForm(data.id)"><i class="fa fa-edit"></i></a>
+	                        <a class="body-table-link" :href="'/edit-from-second-table/' + data.id" @click.prevent="showEditForm(data.id)"><i class="fa fa-edit"></i></a>
 	                        <button class="body-table-link" @click="destroyData(data.id)"><i class="fa fa-trash"></i></button>
 	                    </td>
 	                </tr>

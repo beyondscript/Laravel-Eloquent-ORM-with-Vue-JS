@@ -24,7 +24,7 @@
 	                    </td>
 	                    <td v-else>No Image</td>
 	                    <td>
-	                        <a class="body-table-link" :href="'/update/data/' + data.id" @click.prevent="showEditForm(data.id)"><i class="fa fa-edit"></i></a>
+	                        <a class="body-table-link" :href="'/edit-from-first-table/' + data.id" @click.prevent="showEditForm(data.id)"><i class="fa fa-edit"></i></a>
 	                        <button class="body-table-link" @click="destroyData(data.id)"><i class="fa fa-trash"></i></button>
 	                    </td>
 	                </tr>
